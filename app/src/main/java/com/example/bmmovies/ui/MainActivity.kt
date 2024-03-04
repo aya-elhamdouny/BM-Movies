@@ -1,8 +1,8 @@
-package com.example.bmmovies
+package com.example.bmmovies.ui
 
-import com.aya.moviesapp.R
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bmmovies.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

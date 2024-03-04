@@ -1,4 +1,4 @@
-package com.example.bmmovies.data.data.repository
+package com.example.bmmovies.data.repository
 
 import com.example.bmmovies.domain.entities.response.MoviesListingRemoteResponse
 import com.example.bmmovies.domain.entities.remote.RemoteMovieDetails

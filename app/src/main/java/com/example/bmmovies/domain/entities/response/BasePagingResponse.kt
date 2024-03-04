@@ -1,5 +1,8 @@
 package com.example.bmmovies.domain.entities.response
 
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
 open class BasePagingResponse<T> {
     @Expose
     @SerializedName("results")

@@ -1,6 +1,6 @@
 object AppConfig {
-    const val applicationId = "com.aya.moviesapp"
-    const val nameSpec = "com.aya.moviesapp"
+    const val applicationId = "com.example.bmmovies"
+    const val nameSpec = "com.example.bmmovies"
     const val rootProjectName = "BM-Movies"
     const val compileSdk = 33
     const val minSdk = 21

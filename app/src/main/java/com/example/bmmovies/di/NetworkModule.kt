@@ -1,10 +1,22 @@
 package com.example.bmmovies.di
 
+import android.content.Context
+import android.os.storage.StorageManager
+import com.example.bmmovies.BuildConfig
+import com.example.bmmovies.data.api.MoviesApi
 import com.example.bmmovies.data.utilities.Config
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -61,5 +73,10 @@ class NetworkModule {
     @Singleton
     fun providesGsonConverterFactory(gson: Gson): GsonConverterFactory {
         return GsonConverterFactory.create(gson)
+    }
+
+    @Provides
+    internal fun provideMoviesApi(retrofit: Retrofit): MoviesApi {
+        return retrofit.create(MoviesApi::class.java)
     }
 }
