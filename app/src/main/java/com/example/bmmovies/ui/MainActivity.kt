@@ -1,14 +1,13 @@
 package com.example.bmmovies.ui
 
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.bmmovies.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -25,9 +24,6 @@ class MainActivity : AppCompatActivity() {
             val de = viewModel.getDetailData()
 
         }
-
-
-
 
 
     }

@@ -13,6 +13,10 @@ object Versions {
     val legacy_version = "1.0.0"
     val constraintlayout_version = "2.1.4"
     val material_version = "1.6.1"
+    val activity_compose_version = "1.8.2"
+    val compose_bom_version = "2024.02.01"
+    val compose_version = "1.6.0"
+    val compose_material_version = "1.2.0"
     val retrofit2_version = "2.9.0"
     val okhttp3_version = "4.10.0"
     val converter_gson_version = "2.9.0"
@@ -98,6 +102,23 @@ object Androidx {
 
 object Material {
     val material = "com.google.android.material:material:${Versions.material_version}"
+}
+
+object Compose {
+    val activity_compose = "androidx.activity:activity-compose:${Versions.activity_compose_version}"
+    val compose_bom = "androidx.compose:compose-bom:${Versions.compose_bom_version}"
+    val compose_ui = "androidx.compose.ui:ui"
+    val compose_graphics = "androidx.compose.ui:ui-graphics"
+    val compose_runtime = "androidx.compose.runtime:runtime"
+    val compose_foundation = "androidx.compose.foundation:foundation"
+    val compose_animation = "androidx.compose.animation:animation"
+    val compose_material = "androidx.compose.material:material"
+    val compose_material3 =
+        "androidx.compose.material3:material3"
+    val compose_tooling_preview = "androidx.compose.ui:ui-tooling-preview"
+    val compose_ui_test_junit = "androidx.compose.ui:ui-test-junit4"
+    val compose_ui_tooling = "androidx.compose.ui:ui-tooling"
+    val compose_ui_test_manifest = "androidx.compose.ui:ui-test-manifest"
 }
 
 object Retrofit {

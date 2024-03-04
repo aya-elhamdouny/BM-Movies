@@ -40,6 +40,10 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 }
 
@@ -85,4 +89,20 @@ dependencies {
     implementation(Hilt.hilt_android)
     kapt(Hilt.kapt_hilt_android)
     kapt(Hilt.kapt_hilt_compiler)
+
+    // compose
+    implementation(Compose.activity_compose)
+    implementation(platform(Compose.compose_bom))
+    implementation(Compose.compose_ui)
+    implementation(Compose.compose_graphics)
+    implementation(Compose.compose_tooling_preview)
+    implementation(Compose.compose_runtime)
+    implementation(Compose.compose_foundation)
+    implementation(Compose.compose_animation)
+    implementation(Compose.compose_material)
+    implementation(Compose.compose_material3)
+    androidTestImplementation(platform(Compose.compose_bom))
+    androidTestImplementation(Compose.compose_ui_test_junit)
+    debugImplementation(Compose.compose_ui_tooling)
+    debugImplementation(Compose.compose_ui_test_manifest)
 }
