@@ -7,8 +7,6 @@ plugins {
 
 buildscript {
     extra.apply {
-    }
-    extra.apply {
         set("minSdkVersion", AppConfig.minSdk)
         set("targetSdkVersion", AppConfig.targetSdk)
         set("kotlin_version", "1.9.0")

@@ -1,5 +1,11 @@
 package com.example.bmmovies.data.source.remote
 
-interface MoviesRemoteSource {
+import com.example.bmmovies.domain.entities.quiries.MovieDetailsQuery
+import com.example.bmmovies.domain.entities.quiries.MovieListingQuery
+import com.example.bmmovies.domain.entities.remote.RemoteMovieDetails
+import com.example.bmmovies.domain.entities.response.MoviesListingRemoteResponse
 
+interface MoviesRemoteSource {
+    suspend fun getMoviesList(movieListingQuery: MovieListingQuery): MoviesListingRemoteResponse
+    suspend fun getMovieDetails(movieDetailsQuery: MovieDetailsQuery): RemoteMovieDetails
 }

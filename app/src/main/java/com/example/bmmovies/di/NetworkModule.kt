@@ -12,6 +12,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,6 +36,24 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun apiKeyInterceptor(): Interceptor {
+        return Interceptor { chain ->
+            val original = chain.request()
+            val originalHttpUrl = original.url
+
+            val url = originalHttpUrl.newBuilder()
+                .addQueryParameter("api_key", Config.API_KEY)
+                .build()
+
+            val requestBuilder = original.newBuilder().url(url)
+            val request = requestBuilder.build()
+
+            chain.proceed(request)
+        }
+    }
+
+    @Provides
+    @Singleton
     fun loggingInterceptor(): HttpLoggingInterceptor {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = if (BuildConfig.BUILD_TYPE == "release") {
@@ -49,8 +68,8 @@ class NetworkModule {
     @Singleton
     fun providesOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        @ApplicationContext appContext: Context,
-        storageManager: StorageManager
+        apiKeyInterceptor: Interceptor,
+        @ApplicationContext appContext: Context
     ): OkHttpClient {
         val okHttpClientBuilder = OkHttpClient.Builder()
         okHttpClientBuilder
@@ -58,6 +77,8 @@ class NetworkModule {
             .writeTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(apiKeyInterceptor)  // Add the API key interceptor here
+
         return okHttpClientBuilder.build()
     }
 
@@ -79,4 +100,5 @@ class NetworkModule {
     internal fun provideMoviesApi(retrofit: Retrofit): MoviesApi {
         return retrofit.create(MoviesApi::class.java)
     }
+    //95f7a492542e065f89ea88ff37aa8122
 }

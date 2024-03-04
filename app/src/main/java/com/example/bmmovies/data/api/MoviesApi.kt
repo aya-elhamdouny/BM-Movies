@@ -13,16 +13,14 @@ interface MoviesApi {
     suspend fun getDiscoverMoviesListing(
         @Query("page") page: Int,
         @Query("sort_by") sortBy: String,
-        @Query("language") language: String,
-        @Query("api_key") apiKey: String
+        @Query("language") language: String
     ): MoviesListingRemoteResponse
 
     @GET(Config.MOVIE_DETAILS)
     suspend fun getMovieDetails(
         @Path(Config.ID) movieId: Long,
         @Query("language") language: String,
-        @Query("append_to_response") appendToResponse: String,
-        @Query("api_key") apiKey: String
+        @Query("append_to_response") appendToResponse: String
     ): RemoteMovieDetails
 
 }
