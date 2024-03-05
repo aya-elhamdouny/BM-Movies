@@ -102,6 +102,8 @@ dependencies {
     implementation(Compose.compose_animation)
     implementation(Compose.compose_material)
     implementation(Compose.compose_coil)
+    implementation(Compose.compose_navigation_hilt)
+    implementation(Compose.compose_icons_extended)
 //    implementation(Compose.compose_material3)
     implementation(Compose.compose_navigation)
     androidTestImplementation(platform(Compose.compose_bom))

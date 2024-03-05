@@ -17,6 +17,8 @@ object Versions {
     val compose_bom_version = "2024.02.01"
     val compose_version = "1.6.0"
     val compose_navigation_version = "2.4.0"
+    val compose_icon_extended_version = "1.6.2"
+    val compose_hilt_navigation_version = "1.2.0"
     val compose_material_version = "1.2.0"
     val compose_coil_version = "1.3.2"
     val retrofit2_version = "2.9.0"
@@ -123,8 +125,11 @@ object Compose {
     val compose_ui_test_junit = "androidx.compose.ui:ui-test-junit4"
     val compose_ui_tooling = "androidx.compose.ui:ui-tooling"
     val compose_ui_test_manifest = "androidx.compose.ui:ui-test-manifest"
-    val compose_coil =  "io.coil-kt:coil-compose:${Versions.compose_coil_version}"
-
+    val compose_coil = "io.coil-kt:coil-compose:${Versions.compose_coil_version}"
+    val compose_navigation_hilt =
+        "androidx.hilt:hilt-navigation-compose:${Versions.compose_hilt_navigation_version}"
+    val compose_icons_extended =
+        "androidx.compose.material:material-icons-extended:${Versions.compose_icon_extended_version}"
 }
 
 object Retrofit {

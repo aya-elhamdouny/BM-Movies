@@ -28,48 +28,46 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.bmmovies.R
 import com.example.bmmovies.domain.entities.local.Movie
+import com.example.bmmovies.utils.Screen
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun MovieListItem(navController: NavController, movie: Movie) {
+fun MovieListItem(movie: Movie, navController: NavController) {
     Box(
         Modifier
             .clickable {
-//                navController.navigate(Screen.Detail.createRoute(movie.id.toString()))
+                navController.navigate(Screen.MovieDetails.route + "/${movie.id}")
             }
-            .fillMaxWidth()) {
-        Row(
-            Modifier
-                .padding(10.dp)
-                .fillMaxWidth()
+            .fillMaxWidth()
+    ) {
+        Column(
+            Modifier.fillMaxWidth()
         ) {
             Image(
                 painter = rememberImagePainter(data = movie.posterImage),
                 contentDescription = null,
-                modifier = Modifier.size(500.dp, 400.dp)
+                modifier = Modifier.size(500.dp, 500.dp)
             )
             Column(
                 modifier = Modifier
-                    .padding(start = 10.dp)
-                    .fillMaxHeight()
-                    .align(CenterVertically),
+                    .padding(start = 8.dp, end = 8.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
                     text = movie.title,
-                    color = Color.Black,
-                    fontSize = 14.sp,
+                    color = Color.White,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(Modifier.height(10.dp))
-                Text(text = movie.releaseDate, color = Color.Black, fontSize = 14.sp)
+                Text(text = movie.releaseDate, color = Color.White, fontSize = 14.sp)
                 Spacer(Modifier.height(10.dp))
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = movie.rating.toString(), color = Color.Black, fontSize = 14.sp,
+                        text = movie.rating.toString(), color = Color.White, fontSize = 14.sp,
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Image(
