@@ -1,16 +1,13 @@
 package com.example.bmmovies.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bmmovies.data.repository.MoviesRepository
 import com.example.bmmovies.domain.entities.local.Movie
 import com.example.bmmovies.domain.entities.local.MovieDetails
 import com.example.bmmovies.domain.entities.local.ResponsePagingResultModel
-import com.example.bmmovies.domain.entities.mapper.MovieMapper
-import com.example.bmmovies.domain.entities.quiries.MovieDetailsQuery
-import com.example.bmmovies.domain.entities.quiries.MovieListingQuery
-import com.example.bmmovies.domain.entities.response.MoviesListingRemoteResponse
+import com.example.bmmovies.domain.entities.query.MovieDetailsQuery
+import com.example.bmmovies.domain.entities.query.MovieListingQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

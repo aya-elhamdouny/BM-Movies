@@ -1,4 +1,4 @@
-package com.example.bmmovies.domain.entities.mapper
+package com.example.bmmovies.domain.mapper
 
 
 import android.os.Build

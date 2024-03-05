@@ -3,10 +3,8 @@ package com.example.bmmovies.data.repository
 import com.example.bmmovies.domain.entities.local.Movie
 import com.example.bmmovies.domain.entities.local.MovieDetails
 import com.example.bmmovies.domain.entities.local.ResponsePagingResultModel
-import com.example.bmmovies.domain.entities.response.MoviesListingRemoteResponse
-import com.example.bmmovies.domain.entities.remote.RemoteMovieDetails
-import com.example.bmmovies.domain.entities.quiries.MovieDetailsQuery
-import com.example.bmmovies.domain.entities.quiries.MovieListingQuery
+import com.example.bmmovies.domain.entities.query.MovieDetailsQuery
+import com.example.bmmovies.domain.entities.query.MovieListingQuery
 
 interface MoviesRepository {
 

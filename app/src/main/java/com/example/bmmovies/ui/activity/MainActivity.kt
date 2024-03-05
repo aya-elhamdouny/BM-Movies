@@ -1,4 +1,4 @@
-package com.example.bmmovies.ui
+package com.example.bmmovies.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

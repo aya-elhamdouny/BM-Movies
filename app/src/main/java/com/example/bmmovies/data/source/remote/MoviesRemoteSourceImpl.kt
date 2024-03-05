@@ -1,8 +1,8 @@
 package com.example.bmmovies.data.source.remote
 
 import com.example.bmmovies.data.api.MoviesApi
-import com.example.bmmovies.domain.entities.quiries.MovieDetailsQuery
-import com.example.bmmovies.domain.entities.quiries.MovieListingQuery
+import com.example.bmmovies.domain.entities.query.MovieDetailsQuery
+import com.example.bmmovies.domain.entities.query.MovieListingQuery
 import com.example.bmmovies.domain.entities.remote.RemoteMovieDetails
 import com.example.bmmovies.domain.entities.response.MoviesListingRemoteResponse
 import javax.inject.Inject

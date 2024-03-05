@@ -6,16 +6,14 @@ import com.example.bmmovies.data.source.remote.MoviesRemoteSource
 import com.example.bmmovies.domain.entities.local.Movie
 import com.example.bmmovies.domain.entities.local.MovieDetails
 import com.example.bmmovies.domain.entities.local.ResponsePagingResultModel
-import com.example.bmmovies.domain.entities.mapper.MovieDetailsMapper
-import com.example.bmmovies.domain.entities.mapper.MovieMapper
-import com.example.bmmovies.domain.entities.quiries.MovieDetailsQuery
-import com.example.bmmovies.domain.entities.quiries.MovieListingQuery
-import com.example.bmmovies.domain.entities.remote.RemoteMovieDetails
-import com.example.bmmovies.domain.entities.response.MoviesListingRemoteResponse
+import com.example.bmmovies.domain.mapper.MovieDetailsMapper
+import com.example.bmmovies.domain.mapper.MovieMapper
+import com.example.bmmovies.domain.entities.query.MovieDetailsQuery
+import com.example.bmmovies.domain.entities.query.MovieListingQuery
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor
-    (private val moviesRemoteSource: MoviesRemoteSource ,
+    (private val moviesRemoteSource: MoviesRemoteSource,
      private val movieMapper : MovieMapper,
      private val movieDetailMapper : MovieDetailsMapper
 ) :

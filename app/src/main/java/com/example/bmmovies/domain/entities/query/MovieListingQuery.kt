@@ -1,4 +1,4 @@
-package com.example.bmmovies.domain.entities.quiries
+package com.example.bmmovies.domain.entities.query
 
 data class MovieListingQuery(
     var pageNumber: Int,

@@ -1,4 +1,4 @@
-package com.example.bmmovies.domain.entities.mapper
+package com.example.bmmovies.domain.mapper
 
 import com.example.bmmovies.domain.entities.local.MovieDetails
 import com.example.bmmovies.domain.entities.remote.RemoteMovieDetails
