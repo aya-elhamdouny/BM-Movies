@@ -18,6 +18,7 @@ object Versions {
     val compose_version = "1.6.0"
     val compose_navigation_version = "2.4.0"
     val compose_material_version = "1.2.0"
+    val compose_coil_version = "1.3.2"
     val retrofit2_version = "2.9.0"
     val okhttp3_version = "4.10.0"
     val converter_gson_version = "2.9.0"
@@ -122,6 +123,8 @@ object Compose {
     val compose_ui_test_junit = "androidx.compose.ui:ui-test-junit4"
     val compose_ui_tooling = "androidx.compose.ui:ui-tooling"
     val compose_ui_test_manifest = "androidx.compose.ui:ui-test-manifest"
+    val compose_coil =  "io.coil-kt:coil-compose:${Versions.compose_coil_version}"
+
 }
 
 object Retrofit {

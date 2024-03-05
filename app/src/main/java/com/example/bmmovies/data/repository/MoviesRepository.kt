@@ -7,8 +7,6 @@ import com.example.bmmovies.domain.entities.query.MovieDetailsQuery
 import com.example.bmmovies.domain.entities.query.MovieListingQuery
 
 interface MoviesRepository {
-
     suspend fun getMoviesList(movieListingQuery: MovieListingQuery): ResponsePagingResultModel<Movie>
     suspend fun getMovieDetails(movieDetailsQuery: MovieDetailsQuery): MovieDetails
-
 }
