@@ -1,7 +1,6 @@
 package com.example.bmmovies.di
 
 import android.content.Context
-import android.os.storage.StorageManager
 import com.example.bmmovies.BuildConfig
 import com.example.bmmovies.data.api.MoviesApi
 import com.example.bmmovies.data.utilities.Config
@@ -42,7 +41,7 @@ class NetworkModule {
             val originalHttpUrl = original.url
 
             val url = originalHttpUrl.newBuilder()
-                .addQueryParameter("api_key", Config.API_KEY)
+                .addQueryParameter("api_key", BuildConfig.API_KEY)
                 .build()
 
             val requestBuilder = original.newBuilder().url(url)

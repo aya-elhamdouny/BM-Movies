@@ -18,6 +18,7 @@ android {
         targetSdk = AppConfig.targetSdk
         compileSdk = AppConfig.compileSdk
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
+        buildConfigField("String", "API_KEY", "\"95f7a492542e065f89ea88ff37aa8122\"")
     }
 
     buildTypes {
