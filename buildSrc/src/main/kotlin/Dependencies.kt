@@ -16,6 +16,7 @@ object Versions {
     val activity_compose_version = "1.8.2"
     val compose_bom_version = "2024.02.01"
     val compose_version = "1.6.0"
+    val compose_navigation_version = "2.4.0"
     val compose_material_version = "1.2.0"
     val retrofit2_version = "2.9.0"
     val okhttp3_version = "4.10.0"
@@ -108,6 +109,8 @@ object Compose {
     val activity_compose = "androidx.activity:activity-compose:${Versions.activity_compose_version}"
     val compose_bom = "androidx.compose:compose-bom:${Versions.compose_bom_version}"
     val compose_ui = "androidx.compose.ui:ui"
+    val compose_navigation =
+        "androidx.navigation:navigation-compose:${Versions.compose_navigation_version}"
     val compose_graphics = "androidx.compose.ui:ui-graphics"
     val compose_runtime = "androidx.compose.runtime:runtime"
     val compose_foundation = "androidx.compose.foundation:foundation"
