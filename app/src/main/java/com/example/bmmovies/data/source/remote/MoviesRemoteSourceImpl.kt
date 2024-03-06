@@ -11,8 +11,8 @@ class MoviesRemoteSourceImpl @Inject constructor(private val moviesApi: MoviesAp
     MoviesRemoteSource {
     override suspend fun getMoviesList(movieListingQuery: MovieListingQuery): MoviesListingRemoteResponse {
         return moviesApi.getDiscoverMoviesListing(
-            movieListingQuery.pageNumber,
             movieListingQuery.sortBy,
+            movieListingQuery.pageNumber,
             movieListingQuery.language
         )
     }

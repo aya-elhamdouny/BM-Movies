@@ -9,10 +9,10 @@ import retrofit2.http.Query
 
 interface MoviesApi {
 
-    @GET(Config.DISCOVER_MOVIES_LISTING)
+    @GET(Config.MOVIES_LISTING)
     suspend fun getDiscoverMoviesListing(
+        @Path(Config.ID) movieListType: String,
         @Query("page") page: Int,
-        @Query("sort_by") sortBy: String,
         @Query("language") language: String
     ): MoviesListingRemoteResponse
 

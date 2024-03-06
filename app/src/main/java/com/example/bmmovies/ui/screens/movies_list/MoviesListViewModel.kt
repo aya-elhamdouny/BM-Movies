@@ -1,5 +1,6 @@
 package com.example.bmmovies.ui.screens.movies_list
 
+import android.util.Log
 import com.example.bmmovies.utils.ScreenState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,7 +32,7 @@ class MoviesListViewModel @Inject constructor(
 
     fun setListQuery(query: String) {
         listQuery = query
-        getMoviesLista()
+        getMoviesList()
     }
 
     private fun getMoviesList() {
@@ -59,27 +60,6 @@ class MoviesListViewModel @Inject constructor(
                 return@collectLatest
             }
         }
-    }
-
-    private fun getMoviesLista() {
-        viewModelScope.launch {
-            val result = moviesRepository.getMoviesLista(MovieListingQuery(currentPage, listQuery))
-            when (result) {
-                is ApiState.Error -> {
-                    val errorMessage = result.message ?: "Network error happened"
-                    _screenState.value = ScreenState.Error(message = errorMessage)
-
-                }
-
-                is ApiState.Success -> {
-                    result.data?.let { data ->
-                        dataList = dataList + data.dataList
-                        _screenState.value = ScreenState.Success(data)
-                    }
-                }
-            }
-        }
-
     }
 
     fun getNextPage() {
