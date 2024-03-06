@@ -30,7 +30,7 @@ import com.example.bmmovies.ui.components.MovieListItem
 @Composable
 fun NowPlayingScreen() {
     val movieListViewModel = hiltViewModel<MoviesListingViewModel>()
-    val movieListState = movieListViewModel.moviesListState.collectAsState().value
+    val movieListState = movieListViewModel.nowPlayingMoviesListState.collectAsState().value
     val navController = rememberNavController()
 
     if (movieListState.movieList.isEmpty()) {
@@ -55,7 +55,7 @@ fun NowPlayingScreen() {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 if (index >= movieListState.movieList.size - 1 && !movieListState.isLoading) {
-                    movieListViewModel.getMoviesList()
+                    movieListViewModel.getNowPlayingMoviesList()
                 }
             }
         }
