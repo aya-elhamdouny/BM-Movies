@@ -1,4 +1,4 @@
-package com.example.bmmovies.ui.screens.now_playing
+package com.example.bmmovies.ui.screens.movies_list
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,28 +9,29 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.rememberNavController
-import com.example.bmmovies.ui.MoviesListingViewModel
+import androidx.navigation.NavHostController
 import com.example.bmmovies.ui.components.LoadingComponent
 import com.example.bmmovies.ui.components.MovieListItem
-import com.example.bmmovies.utils.Constants
 import com.example.bmmovies.utils.ScreenState
 
 
 @Composable
-fun NowPlayingScreen() {
-    val movieListViewModel = hiltViewModel<MoviesListingViewModel>()
-    val screenState = movieListViewModel.screenState.collectAsState().value
-    val navController = rememberNavController()
+fun MoviesListScreen(
+    listQuery: String, navController: NavHostController,
+) {
+    val movieListViewModel = hiltViewModel<MoviesListViewModel>(key = listQuery)
 
-    movieListViewModel.setListQuery(Constants.NOW_PLAYING_KEY)
+    LaunchedEffect(Unit) {
+        movieListViewModel.setListQuery(listQuery)
+    }
 
-    when (screenState) {
+    when (val screenState = movieListViewModel.screenState.collectAsState().value) {
         is ScreenState.Loading -> {
             LoadingComponent()
         }

@@ -7,8 +7,6 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -29,6 +27,7 @@ import com.example.bmmovies.R
 @Composable
 fun BottomNavScreen() {
     val navController = rememberNavController()
+
     Scaffold(
         topBar = {
             TopAppBar(title = {
@@ -54,6 +53,7 @@ fun BottomBar(navController: NavHostController) {
         BottomBarScreenItem.Popular,
         BottomBarScreenItem.UpComing,
     )
+
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
@@ -91,7 +91,7 @@ fun RowScope.AddItem(
         onClick = {
             navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)
-                launchSingleTop = true
+//                launchSingleTop = true
             }
         }
     )

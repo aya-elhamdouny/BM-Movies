@@ -4,22 +4,21 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.bmmovies.ui.screens.now_playing.NowPlayingScreen
-import com.example.bmmovies.ui.screens.popular.PopularScreen
-import com.example.bmmovies.ui.screens.upcoming.UpComingScreen
+import com.example.bmmovies.ui.screens.movies_list.MoviesListScreen
+import com.example.bmmovies.utils.Constants
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = BottomBarScreenItem.NowPlaying.route)
     {
         composable(BottomBarScreenItem.NowPlaying.route) {
-            NowPlayingScreen()
+            MoviesListScreen(Constants.NOW_PLAYING_KEY, navController)
         }
         composable(BottomBarScreenItem.Popular.route) {
-            PopularScreen()
+            MoviesListScreen(Constants.POPULAR_KEY, navController)
         }
         composable(BottomBarScreenItem.UpComing.route) {
-            UpComingScreen()
+            MoviesListScreen(Constants.UPCOMING_KEY, navController)
         }
     }
 }

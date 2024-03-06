@@ -47,7 +47,33 @@ class MoviesRepositoryImpl @Inject constructor(
                 response.totalPages ?: 0
             )
             emit(ApiState.Success(moviesListResponse))
+            return@flow
         }
+    }
+
+    override suspend fun getMoviesLista(movieListingQuery: MovieListingQuery): ApiState<ResponsePagingResultModel<Movie>> {
+        val response = try {
+            moviesRemoteSource.getMoviesList(movieListingQuery)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return ApiState.Error(message = "IOException => ${e.message}")
+        } catch (e: HttpException) {
+            e.printStackTrace()
+            return ApiState.Error(message = "HttpException => ${e.message()}")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return ApiState.Error(message = "Exception => ${e.message}")
+        }
+
+        val mappedList = response.results?.map {
+            movieMapper.convert(it)
+        } ?: listOf()
+        val moviesListResponse = ResponsePagingResultModel(
+            mappedList,
+            response.totalResults ?: 0,
+            response.totalPages ?: 0
+        )
+        return ApiState.Success(moviesListResponse)
     }
 
     override suspend fun getMovieDetails(movieDetailsQuery: MovieDetailsQuery): Flow<ApiState<MovieDetails>> {
@@ -71,6 +97,7 @@ class MoviesRepositoryImpl @Inject constructor(
             val movieDetails = movieDetailMapper.convert(response)
 
             emit(ApiState.Success(movieDetails))
+            return@flow
         }
     }
 

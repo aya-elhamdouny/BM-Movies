@@ -10,5 +10,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
     suspend fun getMoviesList(movieListingQuery: MovieListingQuery): Flow<ApiState<ResponsePagingResultModel<Movie>>>
+    suspend fun getMoviesLista(movieListingQuery: MovieListingQuery): ApiState<ResponsePagingResultModel<Movie>>
     suspend fun getMovieDetails(movieDetailsQuery: MovieDetailsQuery): Flow<ApiState<MovieDetails>>
 }

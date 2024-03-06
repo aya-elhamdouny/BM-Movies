@@ -32,7 +32,10 @@ import com.example.bmmovies.utils.Screen
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun MovieListItem(movie: Movie, navController: NavController) {
+fun MovieListItem(
+    movie: Movie,
+    navController: NavController
+) {
     Box(
         Modifier
             .clickable {
