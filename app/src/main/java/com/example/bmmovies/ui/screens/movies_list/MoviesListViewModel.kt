@@ -35,7 +35,7 @@ class MoviesListViewModel @Inject constructor(
         getMoviesList()
     }
 
-    private fun getMoviesList() {
+    fun getMoviesList() {
         viewModelScope.launch {
             moviesRepository.getMoviesList(
                 MovieListingQuery(currentPage, listQuery)

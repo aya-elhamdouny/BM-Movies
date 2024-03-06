@@ -19,6 +19,7 @@ import androidx.navigation.NavHostController
 import com.example.bmmovies.utils.components.LoadingComponent
 import com.example.bmmovies.ui.screens.movies_list.components.MovieListItem
 import com.example.bmmovies.utils.ScreenState
+import com.example.bmmovies.utils.components.ErrorView
 
 
 @Composable
@@ -37,11 +38,8 @@ fun MoviesListScreen(
         }
 
         is ScreenState.Error -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(text = screenState.message)
+            ErrorView(screenState.message) {
+                movieListViewModel.getMoviesList()
             }
         }
 

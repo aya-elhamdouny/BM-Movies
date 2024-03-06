@@ -26,15 +26,15 @@ class MoviesRepositoryImpl @Inject constructor(
                 moviesRemoteSource.getMoviesList(movieListingQuery)
             } catch (e: IOException) {
                 e.printStackTrace()
-                emit(ApiState.Error(message = "IOException => ${e.message}"))
+                emit(ApiState.Error(message = "${e.message}"))
                 return@flow
             } catch (e: HttpException) {
                 e.printStackTrace()
-                emit(ApiState.Error(message = "HttpException => ${e.message()}"))
+                emit(ApiState.Error(message = e.message()))
                 return@flow
             } catch (e: Exception) {
                 e.printStackTrace()
-                emit(ApiState.Error(message = "Exception => ${e.message}"))
+                emit(ApiState.Error(message = "${e.message}"))
                 return@flow
             }
 

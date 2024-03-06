@@ -36,7 +36,7 @@ class MovieDetailsViewModel @Inject constructor(
         getMovieDetails()
     }
 
-    private fun getMovieDetails() {
+     fun getMovieDetails() {
         viewModelScope.launch {
             moviesRepository.getMovieDetails(MovieDetailsQuery(movieId = movieId))
                 .catch { error ->

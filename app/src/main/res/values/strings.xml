@@ -9,4 +9,6 @@
     <string name="release_date">"Release Date: "</string>
     <string name="votes">" Votes"</string>
     <string name="overview">Overview</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
 </resources>
