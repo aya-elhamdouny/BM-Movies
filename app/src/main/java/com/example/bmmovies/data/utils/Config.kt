@@ -1,4 +1,4 @@
-package com.example.bmmovies.data.utilities
+package com.example.bmmovies.data.utils
 
 object Config {
 

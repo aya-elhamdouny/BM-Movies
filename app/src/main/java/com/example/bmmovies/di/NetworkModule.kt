@@ -3,7 +3,7 @@ package com.example.bmmovies.di
 import android.content.Context
 import com.example.bmmovies.BuildConfig
 import com.example.bmmovies.data.api.MoviesApi
-import com.example.bmmovies.data.utilities.Config
+import com.example.bmmovies.data.utils.Config
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

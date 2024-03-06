@@ -1,21 +1,17 @@
 package com.example.bmmovies.ui
 
-import Resource
-import androidx.lifecycle.MutableLiveData
+import com.example.bmmovies.utils.ScreenState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bmmovies.data.repository.MoviesRepository
+import com.example.bmmovies.data.utils.ApiState
 import com.example.bmmovies.domain.entities.local.Movie
-import com.example.bmmovies.domain.entities.local.MovieDetails
 import com.example.bmmovies.domain.entities.local.ResponsePagingResultModel
-import com.example.bmmovies.domain.entities.query.MovieDetailsQuery
 import com.example.bmmovies.domain.entities.query.MovieListingQuery
-import com.example.bmmovies.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -25,49 +21,49 @@ import javax.inject.Inject
 class MoviesListingViewModel @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) : ViewModel() {
-    private var _moviesListState = MutableStateFlow(MoviesListState())
-    val moviesListState = _moviesListState.asStateFlow()
 
-    init {
+    private var _screenState =
+        MutableStateFlow<ScreenState<ResponsePagingResultModel<Movie>>>(ScreenState.Loading())
+    val screenState = _screenState.asStateFlow()
+
+    private var dataList = emptyList<Movie>()
+    private var currentPage = 1
+    private var listQuery = ""
+
+    fun setListQuery(query: String) {
+        listQuery = query
         getMoviesList()
     }
 
-    fun getMoviesList() {
+    private fun getMoviesList() {
         viewModelScope.launch {
-            _moviesListState.update {
-                it.copy(isLoading = true)
-            }
-
             moviesRepository.getMoviesList(
-                MovieListingQuery(moviesListState.value.moviesListPage, Constants.NOW_PLAYING_KEY)
-            ).collectLatest { result ->
+                MovieListingQuery(currentPage, listQuery)
+            ).catch { error ->
+                val errorMessage = error.message ?: "Somthing wrong happened"
+                _screenState.value = ScreenState.Error(message = errorMessage)
+                return@catch
+            }.collectLatest { result ->
                 when (result) {
-                    is Resource.Error -> {
-                        _moviesListState.update {
-                            it.copy(isLoading = false, isError = true)
-                        }
+                    is ApiState.Error -> {
+                        val errorMessage = result.message ?: "Network error happened"
+                        _screenState.value = ScreenState.Error(message = errorMessage)
                     }
 
-                    is Resource.Loading -> {
-                        _moviesListState.update {
-                            it.copy(isLoading = result.isLoading)
+                    is ApiState.Success -> {
+                        result.data?.let { data ->
+                            dataList = dataList + data.dataList
+                            _screenState.value = ScreenState.Success(data)
                         }
                     }
-
-                    is Resource.Success -> {
-                        result.data?.let { moviesList ->
-                            _moviesListState.update {
-                                it.copy(
-                                    movieList = moviesListState.value.movieList + moviesList.data,
-                                    moviesListPage = moviesListState.value.moviesListPage + 1
-                                )
-                            }
-                        }
-                    }
-
-                    else -> {}
                 }
+                return@collectLatest
             }
         }
+    }
+
+    fun getNextPage() {
+        currentPage += 1
+        getMoviesList()
     }
 }

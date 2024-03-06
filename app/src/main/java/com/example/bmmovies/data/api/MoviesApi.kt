@@ -1,6 +1,6 @@
 package com.example.bmmovies.data.api
 
-import com.example.bmmovies.data.utilities.Config
+import com.example.bmmovies.data.utils.Config
 import com.example.bmmovies.domain.entities.remote.RemoteMovieDetails
 import com.example.bmmovies.domain.entities.response.MoviesListingRemoteResponse
 import retrofit2.http.GET
