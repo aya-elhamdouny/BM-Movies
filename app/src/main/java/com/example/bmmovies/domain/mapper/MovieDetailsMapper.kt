@@ -13,9 +13,7 @@ class MovieDetailsMapper @Inject constructor(
             MovieDetails(
                 id = it.id ?: 0,
                 title = it.title.orEmpty(),
-                releaseDate = it.releaseDate?.let { date ->
-                    changeDateFormat(date, "yyyy-MM-dd", "yyyy")
-                }.orEmpty(),
+                releaseDate = it.releaseDate.orEmpty(),
                 posterImage = posterBaseUrl +(it.posterPath.orEmpty()),
                 rating = getRating(it.voteAverage),
                 overview = it.overview.orEmpty(),

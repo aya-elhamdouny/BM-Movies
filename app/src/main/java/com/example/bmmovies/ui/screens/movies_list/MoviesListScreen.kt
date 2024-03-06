@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.bmmovies.ui.components.LoadingComponent
-import com.example.bmmovies.ui.components.MovieListItem
+import com.example.bmmovies.utils.components.LoadingComponent
+import com.example.bmmovies.ui.screens.movies_list.components.MovieListItem
 import com.example.bmmovies.utils.ScreenState
 
 
@@ -61,8 +61,9 @@ fun MoviesListScreen(
                         Spacer(modifier = Modifier.height(16.dp))
 
                         if (index >= data.dataList.size - 1) {
-//                            LoadMoreComponent()
-//                            movieListViewModel.getNextPage()
+//                            LaunchedEffect(Unit) {
+//                                movieListViewModel.getNextPage()
+//                            }
                         }
                     }
                 }

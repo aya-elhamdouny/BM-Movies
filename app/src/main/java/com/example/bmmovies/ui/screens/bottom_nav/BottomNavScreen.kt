@@ -22,11 +22,14 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import coil.annotation.ExperimentalCoilApi
 import com.example.bmmovies.R
 
+@ExperimentalCoilApi
 @Composable
-fun BottomNavScreen() {
-    val navController = rememberNavController()
+fun BottomNavScreen(navController: NavHostController) {
+
+    val bottomNavController = rememberNavController()
 
     Scaffold(
         topBar = {
@@ -38,23 +41,23 @@ fun BottomNavScreen() {
                 )
             })
         },
-        bottomBar = { BottomBar(navController = navController) }
+        bottomBar = { BottomBar(navHostController = bottomNavController) }
     ) {
         Modifier.padding(it)
-        BottomNavGraph(navController = navController)
+        BottomNavGraph(bottomNavHostController = bottomNavController, navController = navController)
     }
 }
 
 
 @Composable
-fun BottomBar(navController: NavHostController) {
+fun BottomBar(navHostController: NavHostController) {
     val screens = listOf(
         BottomBarScreenItem.NowPlaying,
         BottomBarScreenItem.Popular,
         BottomBarScreenItem.UpComing,
     )
 
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val navBackStackEntry by navHostController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
     BottomNavigation {
@@ -62,7 +65,7 @@ fun BottomBar(navController: NavHostController) {
             AddItem(
                 screen = screen,
                 currentDestination = currentDestination,
-                navController = navController
+                navController = navHostController
             )
         }
     }
@@ -91,7 +94,7 @@ fun RowScope.AddItem(
         onClick = {
             navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)
-//                launchSingleTop = true
+                launchSingleTop = true
             }
         }
     )

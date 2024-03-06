@@ -1,4 +1,4 @@
-package com.example.bmmovies.ui.components
+package com.example.bmmovies.ui.screens.movies_list.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

@@ -36,7 +36,7 @@ data class RemoteMovieDetails(
     val productionCountries: List<ProductionCountriesItem?>? = null,
 
     @Expose @field:SerializedName("id")
-    val id: Long? = null,
+    val id: Int? = null,
 
     @Expose @field:SerializedName("vote_count")
     val voteCount: Int? = null,

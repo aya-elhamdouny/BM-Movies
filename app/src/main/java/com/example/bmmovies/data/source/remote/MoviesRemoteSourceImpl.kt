@@ -13,7 +13,6 @@ class MoviesRemoteSourceImpl @Inject constructor(private val moviesApi: MoviesAp
         return moviesApi.getDiscoverMoviesListing(
             movieListingQuery.sortBy,
             movieListingQuery.pageNumber,
-            movieListingQuery.language
         )
     }
 

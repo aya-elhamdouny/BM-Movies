@@ -51,7 +51,7 @@ data class RemoteMovie(
 
     @Expose
     @field:SerializedName("id")
-    val id: Long? = null,
+    val id: Int? = null,
 
     @Expose
     @field:SerializedName("adult")
